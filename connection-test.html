@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend-Backend Connection Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-result { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .success { background-color: #d4edda; color: #155724; }
+        .error { background-color: #f8d7da; color: #721c24; }
+        .info { background-color: #cce7ff; color: #004085; }
+    </style>
+</head>
+<body>
+    <h1>Frontend-Backend Connection Test</h1>
+    <button onclick="testConnection()">Test Backend Connection</button>
+    <div id="results"></div>
+
+    <script>
+        async function testConnection() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<div class="info test-result">Testing connection...</div>';
+
+            try {
+                // Test direct backend connection
+                console.log('Testing backend connection...');
+                const response = await fetch('http://localhost:5000/');
+                const data = await response.json();
+                
+                resultsDiv.innerHTML = `
+                    <div class="success test-result">
+                        <strong>✅ Backend Connection Successful!</strong><br>
+                        Response: ${JSON.stringify(data, null, 2)}
+                    </div>
+                    <div class="info test-result">
+                        <strong>Server Info:</strong><br>
+                        Backend: http://localhost:5000<br>
+                        Frontend: http://localhost:5173<br>
+                        API Routes: ${data.routes ? data.routes.join(', ') : 'Not available'}
+                    </div>
+                `;
+            } catch (error) {
+                resultsDiv.innerHTML = `
+                    <div class="error test-result">
+                        <strong>❌ Backend Connection Failed!</strong><br>
+                        Error: ${error.message}<br><br>
+                        <strong>Troubleshooting:</strong><br>
+                        1. Make sure backend server is running on port 5000<br>
+                        2. Check if there are any CORS issues<br>
+                        3. Verify the backend URL is correct
+                    </div>
+                `;
+            }
+        }
+
+        // Auto-test on page load
+        window.onload = () => {
+            setTimeout(testConnection, 1000);
+        };
+    </script>
+</body>
+</html>

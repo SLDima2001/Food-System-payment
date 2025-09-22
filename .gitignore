@@ -1,0 +1,85 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Diagnostic reports
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+coverage
+*.lcov
+
+# Dependency directories
+node_modules/
+frontend/node_modules/
+backend/node_modules/
+
+# Build output
+build
+public/build
+dist
+frontend/dist
+backend/dist
+.next
+out
+
+# Vite/Parcel cache
+.cache
+.parcel-cache
+
+# Temporary files
+.tmp
+.temp
+
+# Env files
+.env
+.env.local
+.env.*.local
+frontend/.env
+frontend/.env.local
+backend/.env
+backend/.env.local
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Yarn/PNPM
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+
+# Logs and uploads
+backend/logs
+backend/uploads
+
+# Local data
+*.local.json
+
+# Git
+.gitignore.local
