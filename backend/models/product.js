@@ -1,4 +1,3 @@
-// models/product.js
 
 import mongoose from 'mongoose';
 
